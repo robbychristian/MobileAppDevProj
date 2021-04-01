@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MobileAppDevProj</string>
     <string name="test_string">String test</string>
+    
     <!--REGISTRATION STRINGS-->
     <string name="registration_title">Create Your Account</string>
     <string name="fullname">Full Name:</string>
@@ -10,4 +11,15 @@
     <string name="password">Password:</string>
     <string name="confirmPassword">Confirm Password:</string>
     <string name="sign_in_btn">Sign In</string>
+
+    <!--LOGIN STRINGS-->
+    <string name="login_title">Login Account</string>
+    <string name="login_email">Email:</string>
+    <string name="login_password">Password:</string>
+    <string name="loginbtn">Login</string>
+    <string name="or">OR</string>
+    <string name="google">Sign in with Google</string>
+    <string name="facebook">Sign in with Facebook</string>
+    <string name="accountRegister">"Don't have an account yet?"</string>
+    <string name="signup">Sign Up Now!</string>
 </resources>
