@@ -4,22 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#240555">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="266dp"
-        android:layout_height="160dp"
+        android:id="@+id/logo"
+        android:layout_width="281dp"
+        android:layout_height="148dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.071"
-        app:srcCompat="@drawable/logogrp" />
+        app:layout_constraintVertical_bias="0.097"
+        app:srcCompat="@drawable/aice_logo_white" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/createYourAccount"
         android:layout_width="317dp"
         android:layout_height="34dp"
         android:text="@string/registration_title"
@@ -32,7 +32,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.343"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"/>
 
     <LinearLayout
         android:layout_width="337dp"
@@ -47,50 +48,68 @@
         <EditText
             android:id="@+id/fullName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:hint="@string/fullname"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:background="@color/white"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"/>
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:background="@color/white"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"/>
 
         <EditText
             android:id="@+id/address"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:hint="@string/address"
-            android:inputType="textPostalAddress" />
+            android:inputType="textPostalAddress"
+            android:background="@color/white"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"/>
 
         <EditText
             android:id="@+id/number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:hint="@string/contactNum"
-            android:inputType="number" />
+            android:inputType="number"
+            android:background="@color/white"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"/>
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:background="@color/white"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"/>
 
         <EditText
             android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:hint="@string/confirmPassword"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:background="@color/white"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"/>
     </LinearLayout>
 
     <Button
@@ -100,9 +119,9 @@
         android:text="@string/sign_in_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.892" />
+        app:layout_constraintVertical_bias="0.914" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
