@@ -10,7 +10,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registration)
 
-        var signup_btn = findViewById<Button>(R.id.signInbtn)
+        var signup_btn = findViewById<Button>(R.id.loginbtn)
 
         signup_btn.setOnClickListener {
             var full_name = findViewById<EditText>(R.id.fullName)
