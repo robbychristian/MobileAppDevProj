@@ -62,8 +62,7 @@
         android:layout_marginBottom="590dp"
         android:text="@string/signToContinue"
         android:textColor="#D3D3D3"
-        android:textSize="25sp"
-        android:textStyle="normal|bold"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

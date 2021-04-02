@@ -7,7 +7,8 @@
     <string name="signUpPage">Sign Up</string>
 
     <!--REGISTRATION STRINGS-->
-    <string name="registration_title">Create Your Account</string>
+    <string name="registration_title">Create an Account,</string>
+    <string name="signUpToContinue">Sign up to Get Started!</string>
     <string name="fullname">Full Name:</string>
     <string name="email">Email:</string>
     <string name="address">Address:</string>
@@ -15,6 +16,8 @@
     <string name="password">Password:</string>
     <string name="confirmPassword">Confirm Password:</string>
     <string name="sign_in_btn">Sign In</string>
+    <string name="loginText">Login</string>
+    <string name="alreadyHaveAnAccount">Already have an account?</string>
 
     <!--LOGIN STRINGS-->
     <string name="welcomeLogin">Welcome,</string>
