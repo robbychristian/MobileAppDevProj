@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">MobileAppDevProj</string>
     <string name="test_string">String test</string>
-    
+
+    <!-- WELCOME PAGE -->
+    <string name="loginPage">Login</string>
+    <string name="signUpPage">Sign Up</string>
+
     <!--REGISTRATION STRINGS-->
     <string name="registration_title">Create Your Account</string>
     <string name="fullname">Full Name:</string>
@@ -13,6 +17,8 @@
     <string name="sign_in_btn">Sign In</string>
 
     <!--LOGIN STRINGS-->
+    <string name="welcomeLogin">Welcome,</string>
+    <string name="signToContinue">Sign in to Continue!</string>
     <string name="login_title">Login Account</string>
     <string name="login_email">Email:</string>
     <string name="login_password">Password:</string>
