@@ -1,15 +1,560 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Welcome to Home" />
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/bgcolor"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:src="@drawable/custom_bg_color"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="51dp"
+            android:src="@drawable/aice_logo_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.027"
+            android:layout_marginBottom="200dp"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/titleFlavor"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/title_home"
+                android:textColor="#240555"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/cartBtn"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_shopping_cart" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintVertical_bias="0.054"
+            tools:layout_editor_absoluteX="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <LinearLayout
+                android:id="@+id/scrollContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <!-- FIRST -->
+                <ImageView
+                    android:id="@+id/container_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:src="@drawable/custom_bg_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-75dp">
+
+                    <ImageView
+                        android:id="@+id/image_one"
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/avocatostrawberry" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="58dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/title_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="2IN1 AVOCADO &amp; STRAWBERRY"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="3dp"/>
+
+                        <TextView
+                            android:id="@+id/desc_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textStyle="italic"
+                            android:paddingBottom="3dp"
+                            android:text="A special fruits combination with chocolate syrup and strawberry sauce brings you a special experiment." />
+
+                        <TextView
+                            android:id="@+id/adesc_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:text="Size: 800ml" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/qtytitle_one"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:text="QTY"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp"
+                            android:textAlignment="center"
+                            android:layout_gravity="center" />
+
+                        <EditText
+                            android:id="@+id/qty_one"
+                            android:layout_width="30dp"
+                            android:layout_height="33dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:background="@drawable/custom_input"/>
+                    </LinearLayout>
+
+
+                    <ImageButton
+                        android:id="@+id/addToCartBtn_one"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_add_circle"
+                        />
+                </LinearLayout>
+
+                <!-- SECOND  -->
+                <ImageView
+                    android:id="@+id/container_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:src="@drawable/custom_bg_gray"
+                    android:layout_marginTop="25dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-75dp">
+
+                    <ImageView
+                        android:id="@+id/image_second"
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/chocolate_crispy" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="58dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/title_second"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CHOCOLATE CRISPY"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp"/>
+
+                        <TextView
+                            android:id="@+id/desc_second"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textStyle="italic"
+                            android:paddingBottom="3dp"
+                            android:layout_marginRight="2dp"
+                            android:text="Get 5 delights from 5 layers of delicious milk and vanilla ice cream with crispy chocolate wrap" />
+
+                        <TextView
+                            android:id="@+id/adesc_second"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:text="Size: 60g" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/qtytitle_two"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:text="QTY"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp"
+                            android:textAlignment="center"
+                            android:layout_gravity="center" />
+
+                        <EditText
+                            android:id="@+id/qty_second"
+                            android:layout_width="30dp"
+                            android:layout_height="33dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:background="@drawable/custom_input"/>
+                    </LinearLayout>
+
+
+                    <ImageButton
+                        android:id="@+id/addToCartBtn_second"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_add_circle"
+                        />
+                </LinearLayout>
+
+                <!-- THIRD  -->
+                <ImageView
+                    android:id="@+id/container_third"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:src="@drawable/custom_bg_gray"
+                    android:layout_marginTop="25dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-75dp">
+
+                    <ImageView
+                        android:id="@+id/image_third"
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/chocolate_cup" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="58dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/title_third"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CHOCOLATE CUP"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="3dp"/>
+
+                        <TextView
+                            android:id="@+id/desc_third"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textStyle="italic"
+                            android:paddingBottom="3dp"
+                            android:text="A simple and pure chocolate ice cream." />
+
+                        <TextView
+                            android:id="@+id/adesc_third"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:text="Size: 50g" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/qtytitle_third"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:text="QTY"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp"
+                            android:textAlignment="center"
+                            android:layout_gravity="center" />
+
+                        <EditText
+                            android:id="@+id/qty_third"
+                            android:layout_width="30dp"
+                            android:layout_height="33dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:background="@drawable/custom_input"/>
+                    </LinearLayout>
+
+
+                    <ImageButton
+                        android:id="@+id/addToCartBtn_third"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_add_circle"
+                        />
+                </LinearLayout>
+
+
+                <!-- FOURTH  -->
+                <ImageView
+                    android:id="@+id/container_fourth"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:src="@drawable/custom_bg_gray"
+                    android:layout_marginTop="25dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-75dp">
+
+                    <ImageView
+                        android:id="@+id/image_fourth"
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/chocolate_mochi" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="58dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/title_fourth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CHOCOLATE MOCHI"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="3dp"/>
+
+                        <TextView
+                            android:id="@+id/desc_fourth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textStyle="italic"
+                            android:paddingBottom="3dp"
+                            android:text="THE BEST DESSERT! Enjoy the soft sensation of sticky mochi with luscious chocolate/vanilla ice cream" />
+
+                        <TextView
+                            android:id="@+id/adesc_fourth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:text="Size: 45ml" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/qtytitle_fourth"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:text="QTY"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp"
+                            android:textAlignment="center"
+                            android:layout_gravity="center" />
+
+                        <EditText
+                            android:id="@+id/qty_fourth"
+                            android:layout_width="30dp"
+                            android:layout_height="33dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:background="@drawable/custom_input"/>
+                    </LinearLayout>
+
+
+                    <ImageButton
+                        android:id="@+id/addToCartBtn_fourth"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_add_circle"
+                        />
+                </LinearLayout>
+
+
+                <!-- FIFTH -->
+                <ImageView
+                    android:id="@+id/container_fifth"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:src="@drawable/custom_bg_gray"
+                    android:layout_marginTop="25dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-75dp">
+
+                    <ImageView
+                        android:id="@+id/image_fifth"
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/chocolate_stick" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="58dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/title_fifth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CHOCOLATE STICK"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="3dp"/>
+
+                        <TextView
+                            android:id="@+id/desc_fifth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textStyle="italic"
+                            android:paddingBottom="3dp"
+                            android:text="Enjoy the creamy melting sensation of milk with delicious chocolate dressing" />
+
+                        <TextView
+                            android:id="@+id/adesc_fifth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:text="Size: 40g" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/qtytitle_fifth"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:text="QTY"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp"
+                            android:textAlignment="center"
+                            android:layout_gravity="center" />
+
+                        <EditText
+                            android:id="@+id/qty_fifth"
+                            android:layout_width="30dp"
+                            android:layout_height="33dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:background="@drawable/custom_input"/>
+                    </LinearLayout>
+
+
+                    <ImageButton
+                        android:id="@+id/addToCartBtn_fifth"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_add_circle"
+                        />
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout> <!-- scroll container end -->
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
