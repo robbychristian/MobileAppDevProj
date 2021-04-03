@@ -11,10 +11,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var register_link = findViewById<TextView>(R.id.signUpNow)
+        var signUp = findViewById<Button>(R.id.signup_page)
+        var login = findViewById<Button>(R.id.login_page)
 
-        register_link.setOnClickListener{
+        signUp.setOnClickListener {
             var intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        login.setOnClickListener {
+            var intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

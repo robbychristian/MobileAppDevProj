@@ -9,7 +9,7 @@
     >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageVieW"
         android:layout_width="300dp"
         android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.892">
 
         <Button
-            android:id="@+id/signUpPage"
+            android:id="@+id/login_page"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -42,7 +42,7 @@
             app:backgroundTint="@null" />
 
         <Button
-            android:id="@+id/login_page"
+            android:id="@+id/signup_page"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button"
