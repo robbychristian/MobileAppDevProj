@@ -81,7 +81,16 @@ class DBHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, null, 
 
         return db.update(TABLE_NAME, values, "$COL_EMAIL=?", arrayOf(user.email.toString()))
     }
+    //LOGIN
+    fun loginUser(email:String, pass:String): Boolean {
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COL_EMAIL=? AND $COL_PASS=?"
+        val whereArgs = arrayOf(email, pass)
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(query, whereArgs)
 
+        return cursor.count == 1
+    }
+    //REGISTER FUNCTIONS
     fun emailExists(email: String): Boolean {
         val query = "SELECT * FROM $TABLE_NAME WHERE $COL_EMAIL=?"
         val whereArgs = arrayOf(email)
