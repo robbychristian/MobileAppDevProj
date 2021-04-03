@@ -42,6 +42,8 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Password field empty!", Toast.LENGTH_LONG).show()
             } else if (!(pass.text.toString().equals(conf_pass.text.toString()))) {
                 Toast.makeText(applicationContext, "Password Mismatch!", Toast.LENGTH_LONG).show()
+            } else if (db.emailExists(email.text.toString())){
+                Toast.makeText(applicationContext, "Email already exists!", Toast.LENGTH_LONG).show()
             } else {
                 val user = User(
                     full_name.text.toString(),

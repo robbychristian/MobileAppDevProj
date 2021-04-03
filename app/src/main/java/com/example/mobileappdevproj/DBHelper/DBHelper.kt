@@ -81,4 +81,16 @@ class DBHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, null, 
 
         return db.update(TABLE_NAME, values, "$COL_EMAIL=?", arrayOf(user.email.toString()))
     }
+
+    fun emailExists(email: String): Boolean {
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COL_EMAIL=?"
+        val whereArgs = arrayOf(email)
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(query, whereArgs)
+        val count = cursor.count
+
+        cursor.close()
+        return count >= 1
+    }
+
 }
