@@ -21,9 +21,8 @@ class DBHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, null, 
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val CREATE_TABLE_QUERY = ("CREATE TABLE "+ TABLE_NAME + "(" + COL_ID + "INTEGER PRIMARY KEY,"
-                + COL_NAME + " TEXT," + COL_EMAIL + " TEXT," + COL_ADDRESS + " TEXT," + COL_CONTACT
-                + " TEXT," + COL_PASS + " TEXT)")
+        val CREATE_TABLE_QUERY = ("CREATE TABLE $TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " $COL_NAME TEXT, $COL_EMAIL TEXT, $COL_ADDRESS TEXT, $COL_CONTACT TEXT, $COL_PASS TEXT)")
         db!!.execSQL(CREATE_TABLE_QUERY)
     }
 
@@ -60,7 +59,6 @@ class DBHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, null, 
     {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(COL_ID, user.id)
         values.put(COL_NAME, user.name)
         values.put(COL_EMAIL, user.email)
         values.put(COL_ADDRESS, user.address)
@@ -75,13 +73,12 @@ class DBHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, null, 
     {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(COL_ID, user.id)
         values.put(COL_NAME, user.name)
         values.put(COL_EMAIL, user.email)
         values.put(COL_ADDRESS, user.address)
         values.put(COL_CONTACT, user.num)
         values.put(COL_PASS, user.pass)
 
-        return db.update(TABLE_NAME, values, "$COL_EMAIL", arrayOf(user.email.toString()))
+        return db.update(TABLE_NAME, values, "$COL_EMAIL=?", arrayOf(user.email.toString()))
     }
 }
