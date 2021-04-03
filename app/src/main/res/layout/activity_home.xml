@@ -14,13 +14,10 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:menu="@menu/menu"
-      app:itemIconTint="#240555"
-      app:itemBackground="#240555"
-      app:itemTextColor="#240555"
-      android:background="#240555"
       app:labelVisibilityMode="labeled" />
 
   <FrameLayout
+      android:id="@+id/fragment_container"
       android:layout_width="match_parent"
       android:layout_height="560dp"
       app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
