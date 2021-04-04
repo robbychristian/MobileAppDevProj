@@ -37,4 +37,10 @@
 
     <!-- FRAGMENT HOME -->
     <string name="title_home">Aice Ice Cream Flavors</string>
+
+    <!-- FRAGMENT PROFILE -->
+    <string name="profile_email">Email:</string>
+    <string name="profile_address">Address:</string>
+    <string name="profile_num">Contact Number:</string>
+    <string name="logout">Logout</string>
 </resources>
