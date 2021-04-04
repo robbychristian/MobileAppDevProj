@@ -3,16 +3,15 @@ package com.example.mobileappdevproj
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.mobileappdevproj.DBHelper.DBHelper
+import com.example.mobileappdevproj.DBHelper.DBHelper_User
 import com.example.mobileappdevproj.Model.User
 
 class RegisterActivity : AppCompatActivity() {
 
-    internal lateinit var db:DBHelper
+    internal lateinit var dbUser:DBHelper_User
     internal var listUser: List<User> = ArrayList<User>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +19,7 @@ class RegisterActivity : AppCompatActivity() {
 
         var signup_btn = findViewById<Button>(R.id.loginbtn)
 
-        db = DBHelper(this)
+        dbUser = DBHelper_User(this)
 
         signup_btn.setOnClickListener {
             var full_name = findViewById<EditText>(R.id.fullName)
@@ -42,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Password field empty!", Toast.LENGTH_LONG).show()
             } else if (!(pass.text.toString().equals(conf_pass.text.toString()))) {
                 Toast.makeText(applicationContext, "Password Mismatch!", Toast.LENGTH_LONG).show()
-            } else if (db.emailExists(email.text.toString())){
+            } else if (dbUser.emailExists(email.text.toString())){
                 Toast.makeText(applicationContext, "Email already exists!", Toast.LENGTH_LONG).show()
             } else {
                 val user = User(
@@ -52,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                     contact.text.toString(),
                     pass.text.toString(),
                 )
-                db.addUser(user)
+                dbUser.addUser(user)
                 Toast.makeText(applicationContext, "Successfully Registered!", Toast.LENGTH_LONG).show()
 
                 val intent = Intent(this, LoginActivity::class.java)

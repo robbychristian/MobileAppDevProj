@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mobileappdevproj.DBHelper.DBHelper
+import com.example.mobileappdevproj.DBHelper.DBHelper_User
 import com.example.mobileappdevproj.Model.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -17,29 +18,34 @@ import com.google.android.gms.tasks.Task
 
 
 class LoginActivity : AppCompatActivity() {
-    internal lateinit var db:DBHelper
+    internal lateinit var dbUser:DBHelper_User
     internal var listUser: List<User> = ArrayList<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.loginlayout)
 
-        db = DBHelper(this)
+        dbUser = DBHelper_User(this)
 
         val emailVal = intent.getStringExtra("email")
         val email = findViewById<EditText>(R.id.email).apply {
             setText(emailVal)
         }
         val pass = findViewById<EditText>(R.id.password)
+
         //User Login
         val loginBtn = findViewById<Button>(R.id.login_btn)
 
         loginBtn.setOnClickListener {
-            if(db.loginUser(email.text.toString(), pass.text.toString())) {
+            if(dbUser.loginUser(email.text.toString(), pass.text.toString())) {
                 var intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("email", email.text.toString())
                 intent.putExtra("pass", email.text.toString())
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                               Intent.FLAG_ACTIVITY_CLEAR_TASK or
+                               Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
+                finish()
                 Toast.makeText(applicationContext, "Successfully logged in", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(applicationContext, "Error Logging in!", Toast.LENGTH_SHORT).show()
