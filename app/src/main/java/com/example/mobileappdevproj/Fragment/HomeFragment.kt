@@ -28,7 +28,6 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadItems()
     }
 
     override fun onCreateView(
@@ -41,6 +40,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
+        loadItems()
     }
 
     companion object {
@@ -65,23 +65,17 @@ class HomeFragment : Fragment() {
 
 
     private fun getItemList(): ArrayList<Products> {
-        val db = DBHelper_Prod(context)
-        val itemList: ArrayList<Products> = db.prodList()
+        val db = DBHelper_Prod(this.context)
+        val itemList: ArrayList<Products> = db.allProd
 
         return itemList
     }
 
     private fun loadItems() {
         val rvItemList = view?.findViewById<RecyclerView>(R.id.recyclerViewProducts)
+        val ProdAdapter = ListProductAdapter(this.context, getItemList())
+        rvItemList?.layoutManager = LinearLayoutManager(this.context)
+        rvItemList?.adapter = ProdAdapter
 
-        if (getItemList().size > 0) {
-            rvItemList!!.visibility = View.VISIBLE
-
-            rvItemList.layoutManager = LinearLayoutManager(context)
-            val ProdAdapter = ListProductAdapter(context, getItemList())
-            rvItemList.adapter = ProdAdapter
-        } else {
-            rvItemList!!.visibility = View.GONE
-        }
     }
 }

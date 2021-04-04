@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobileappdevproj.Fragment.HomeFragment
 import com.example.mobileappdevproj.HomeActivity
 import com.example.mobileappdevproj.Model.Products
 import com.example.mobileappdevproj.R
@@ -17,15 +18,11 @@ class ListProductAdapter(val context: Context?, val items: ArrayList<Products>) 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.single_item,
-                parent,
-                false
-            )
+            LayoutInflater.from(context).inflate(R.layout.single_item, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ListProductAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = items.get(position)
         holder.tvName.text = product.prod_name
         holder.tvDesc.text = product.prod_desc

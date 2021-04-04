@@ -33,11 +33,11 @@ class DBHelper_Prod(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME,
         onCreate(db!!)
     }
 
-    val allProd:List<Products>
+    val allProd:ArrayList<Products>
     get() {
         val listProd = ArrayList<Products>()
         val selectQuery = "SELECT * FROM $TABLE_NAME"
-        val db = this.writableDatabase
+        val db = this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         if (cursor.moveToFirst())
         {
@@ -55,8 +55,8 @@ class DBHelper_Prod(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME,
     }
 
     fun prodList(): ArrayList<Products> {
-        val prodList: ArrayList<Products> = ArrayList<Products>()
-        val selectQuery = "SELECT * FROM $TABLE_NAME"
+        val prodList: ArrayList<Products> = ArrayList()
+        val selectQuery = "SELECT * FROM Products"
         val db = this.writableDatabase
         var cursor: Cursor? = null
         cursor = db.rawQuery(selectQuery,null)
