@@ -2,11 +2,13 @@ package com.example.mobileappdevproj.DBHelper
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.mobileappdevproj.Model.Products
 
-class DBHelper_Prod(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VER) {
+class DBHelper_Prod(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VER) {
     companion object {
         private val DATABASE_VER = 1
         private val DATABASE_NAME = "QuadCore.db"
@@ -40,8 +42,7 @@ class DBHelper_Prod(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, 
         if (cursor.moveToFirst())
         {
             do {
-                val products = Products()
-                products.prod_id = cursor.getInt(cursor.getColumnIndex(PROD_ID))
+                val products = Products(PROD_NAME, PROD_DESC, PROD_SIZE, PROD_PRICE, PROD_IMG)
                 products.prod_name = cursor.getString(cursor.getColumnIndex(PROD_NAME))
                 products.prod_desc = cursor.getString(cursor.getColumnIndex(PROD_DESC))
                 products.prod_size = cursor.getString(cursor.getColumnIndex(PROD_SIZE))
@@ -53,18 +54,23 @@ class DBHelper_Prod(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, 
         return listProd
     }
 
-    fun addProd(prod: Products)
-    {
+    fun prodList(): ArrayList<Products> {
+        val prodList: ArrayList<Products> = ArrayList<Products>()
+        val selectQuery = "SELECT * FROM $TABLE_NAME"
         val db = this.writableDatabase
-        val values = ContentValues()
-        values.put(PROD_NAME, prod.prod_name)
-        values.put(PROD_DESC, prod.prod_desc)
-        values.put(PROD_SIZE, prod.prod_size)
-        values.put(PROD_PRICE, prod.prod_price)
-        values.put(PROD_IMG, prod.prod_img)
+        var cursor: Cursor? = null
+        cursor = db.rawQuery(selectQuery,null)
 
-        db.insert(TABLE_NAME, null, values)
-        db.close()
+
+        if (cursor.moveToFirst()) {
+            do {
+                var name = cursor.getString(cursor.getColumnIndex(PROD_NAME))
+                var desc = cursor.getString(cursor.getColumnIndex(PROD_DESC))
+                var price = cursor.getString(cursor.getColumnIndex(PROD_PRICE))
+                var size = cursor.getString(cursor.getColumnIndex(PROD_SIZE))
+                var img = cursor.getString(cursor.getColumnIndex(PROD_IMG))
+            } while (cursor.moveToNext())
+        }
+        return prodList
     }
-
 }

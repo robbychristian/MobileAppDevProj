@@ -2,10 +2,16 @@ package com.example.mobileappdevproj
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mobileappdevproj.Adapter.ListProductAdapter
+import com.example.mobileappdevproj.DBHelper.DBHelper_Prod
 import com.example.mobileappdevproj.Fragment.HomeFragment
 import com.example.mobileappdevproj.Fragment.TransactionFragment
 import com.example.mobileappdevproj.Fragment.ProfileFragment
+import com.example.mobileappdevproj.Model.Products
 
 class HomeActivity : AppCompatActivity() {
 
@@ -17,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         replaceFragment(HomeFragment)
+
 
         val bottomNav = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottomNavigation)
 
