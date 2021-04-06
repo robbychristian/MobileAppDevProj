@@ -38,18 +38,4 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
 
         return itemList
     }
-
-    //private fun loadItem() {
-    //    if (getItemsList().size > 0) {
-    //        rvProd.visibility = View.VISIBLE
-    //        tvNoRecordsAvailable.visibility = View.GONE
-//
-    //        rvProd.layoutManager = LinearLayoutManager(activity)
-    //        val prodAdapter = ListProductAdapter(context, getItemsList())
-    //        rvProd.adapter = prodAdapter
-    //    } else {
-    //        rvProd.visibility = View.GONE
-    //        tvNoRecordsAvailable.visibility = View.VISIBLE
-    //    }
-    //}
 }
