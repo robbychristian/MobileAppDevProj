@@ -1,81 +1,55 @@
 package com.example.mobileappdevproj.Fragment
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileappdevproj.Adapter.ListProductAdapter
 import com.example.mobileappdevproj.DBHelper.DBHelper_Prod
+import com.example.mobileappdevproj.ListProductAdapter
 import com.example.mobileappdevproj.Model.Products
 import com.example.mobileappdevproj.R
+import kotlinx.android.synthetic.main.fragment_home.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class HomeFragment: Fragment(R.layout.fragment_home) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val ctx = context!!
+        if (getItemsList().size > 0) {
+            val prodAdapter = ListProductAdapter(ctx, getItemsList())
+            rvItems.adapter = prodAdapter
+            rvItems.visibility = View.VISIBLE
+            tvNoRecordsAvailable.visibility = View.GONE
+            rvItems.layoutManager = LinearLayoutManager(activity)
+        } else {
+            rvItems.visibility = View.GONE
+            tvNoRecordsAvailable?.visibility = View.VISIBLE
+        }
+        super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragmen
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
-
-    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(itemView, savedInstanceState)
-        loadItems()
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
-
-    private fun getItemList(): ArrayList<Products> {
-        val db = DBHelper_Prod(this.context)
-        val itemList: ArrayList<Products> = db.allProd
+    private fun getItemsList(): ArrayList<Products> {
+        val dbHandler = DBHelper_Prod(context)
+        val itemList: ArrayList<Products> = dbHandler.prodList()
 
         return itemList
     }
 
-    private fun loadItems() {
-        val rvItemList = view?.findViewById<RecyclerView>(R.id.recyclerViewProducts)
-        val ProdAdapter = ListProductAdapter(this.context, getItemList())
-        rvItemList?.layoutManager = LinearLayoutManager(this.context)
-        rvItemList?.adapter = ProdAdapter
-
-    }
+    //private fun loadItem() {
+    //    if (getItemsList().size > 0) {
+    //        rvProd.visibility = View.VISIBLE
+    //        tvNoRecordsAvailable.visibility = View.GONE
+//
+    //        rvProd.layoutManager = LinearLayoutManager(activity)
+    //        val prodAdapter = ListProductAdapter(context, getItemsList())
+    //        rvProd.adapter = prodAdapter
+    //    } else {
+    //        rvProd.visibility = View.GONE
+    //        tvNoRecordsAvailable.visibility = View.VISIBLE
+    //    }
+    //}
 }

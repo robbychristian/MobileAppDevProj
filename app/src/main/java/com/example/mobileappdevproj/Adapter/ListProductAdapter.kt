@@ -1,24 +1,28 @@
-package com.example.mobileappdevproj.Adapter
+package com.example.mobileappdevproj
 
+import android.R.attr.name
 import android.content.Context
+import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileappdevproj.Fragment.HomeFragment
-import com.example.mobileappdevproj.HomeActivity
 import com.example.mobileappdevproj.Model.Products
-import com.example.mobileappdevproj.R
+import kotlinx.android.synthetic.main.single_item.view.*
 import java.lang.Integer.parseInt
 
-class ListProductAdapter(val context: Context?, val items: ArrayList<Products>) : RecyclerView.Adapter<ListProductAdapter.ViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+class ListProductAdapter(val context: Context, val items: ArrayList<Products>) : RecyclerView.Adapter<ListProductAdapter.ViewHolder>(){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListProductAdapter.ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.single_item, parent, false)
+                LayoutInflater.from(context).inflate(
+                        R.layout.single_item,
+                        parent,
+                        false
+                )
         )
     }
 
@@ -26,13 +30,13 @@ class ListProductAdapter(val context: Context?, val items: ArrayList<Products>) 
         val product = items.get(position)
         holder.tvName.text = product.prod_name
         holder.tvDesc.text = product.prod_desc
-        holder.ivProd.setImageResource(parseInt(product.prod_img))
+        holder.ivProd.setImageResource(product.prod_img.toInt())
         holder.tvSize.text = product.prod_size
         holder.tvPrice.text = product.prod_price
 
         holder.addBtn.setOnClickListener {
             if (context is HomeActivity) {
-                Toast.makeText(context, "Add to Cart working!", Toast.LENGTH_SHORT)
+                Toast.makeText(context, product.prod_name+ " Added", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -42,12 +46,12 @@ class ListProductAdapter(val context: Context?, val items: ArrayList<Products>) 
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val ivProd = view.findViewById<ImageView>(R.id.item_image)
-        val tvName = view.findViewById<TextView>(R.id.item_name)
-        val tvDesc = view.findViewById<TextView>(R.id.item_desc)
-        val tvSize = view.findViewById<TextView>(R.id.item_size)
-        val tvPrice = view.findViewById<TextView>(R.id.item_price)
-        val addBtn = view.findViewById<ImageView>(R.id.addToCartBtn_one)
+        val ivProd = view.item_image
+        val tvName = view.item_name
+        val tvDesc = view.item_desc
+        val tvSize = view.item_size
+        val tvPrice = view.item_price
+        val addBtn = view.addToCartBtn_one
     }
 
 }

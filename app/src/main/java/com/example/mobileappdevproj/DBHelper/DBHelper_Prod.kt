@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.ArrayAdapter
 import com.example.mobileappdevproj.Model.Products
 
 class DBHelper_Prod(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VER) {
@@ -56,19 +57,32 @@ class DBHelper_Prod(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME,
 
     fun prodList(): ArrayList<Products> {
         val prodList: ArrayList<Products> = ArrayList()
-        val selectQuery = "SELECT * FROM Products"
-        val db = this.writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME"
+        val db = this.readableDatabase
         var cursor: Cursor? = null
-        cursor = db.rawQuery(selectQuery,null)
+        try {
+            cursor = db.rawQuery(selectQuery,null)
+        } catch (e: SQLiteException) {
+            db.execSQL(selectQuery)
+            return ArrayList()
+        }
 
+        var name: String
+        var desc: String
+        var price: String
+        var size: String
+        var img: String
 
         if (cursor.moveToFirst()) {
             do {
-                var name = cursor.getString(cursor.getColumnIndex(PROD_NAME))
-                var desc = cursor.getString(cursor.getColumnIndex(PROD_DESC))
-                var price = cursor.getString(cursor.getColumnIndex(PROD_PRICE))
-                var size = cursor.getString(cursor.getColumnIndex(PROD_SIZE))
-                var img = cursor.getString(cursor.getColumnIndex(PROD_IMG))
+                name = cursor.getString(cursor.getColumnIndex(PROD_NAME))
+                desc = cursor.getString(cursor.getColumnIndex(PROD_DESC))
+                price = cursor.getString(cursor.getColumnIndex(PROD_PRICE))
+                size = cursor.getString(cursor.getColumnIndex(PROD_SIZE))
+                img = cursor.getString(cursor.getColumnIndex(PROD_IMG))
+
+                val prod = Products(name, desc, size, price, img)
+                prodList.add(prod)
             } while (cursor.moveToNext())
         }
         return prodList

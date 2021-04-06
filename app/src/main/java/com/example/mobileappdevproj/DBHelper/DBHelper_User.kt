@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.mobileappdevproj.Model.User
 
-class DBHelper_User(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VER) {
+class DBHelper_User(context: Context?):SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VER) {
     companion object {
         private val DATABASE_VER = 1
         private val DATABASE_NAME = "QuadCore.db"
@@ -31,7 +31,7 @@ class DBHelper_User(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, n
         onCreate(db!!)
     }
 
-    val allPerson:List<User>
+    val allPerson:ArrayList<User>
     get() {
         val listUsers = ArrayList<User>()
         val selectQuery = "SELECT * FROM $TABLE_NAME"

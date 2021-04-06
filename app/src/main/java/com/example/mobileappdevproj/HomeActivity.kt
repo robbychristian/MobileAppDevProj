@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileappdevproj.Adapter.ListProductAdapter
 import com.example.mobileappdevproj.DBHelper.DBHelper_Prod
 import com.example.mobileappdevproj.Fragment.HomeFragment
 import com.example.mobileappdevproj.Fragment.TransactionFragment
