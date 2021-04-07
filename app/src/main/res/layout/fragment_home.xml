@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Fragment.HomeFragment">
 
 
@@ -59,7 +59,7 @@
             <ImageButton
                 android:id="@+id/cartBtn"
                 android:layout_width="50dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_shopping_cart" />
         </LinearLayout>
@@ -74,13 +74,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/linearLayout4"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout4"
             app:layout_constraintVertical_bias="0.883">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvItems"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="450dp"
                 android:visibility="visible"
                 tools:visibility="gone" />
 
