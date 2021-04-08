@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobileappdevproj.DBHelper.DBHelper_User
 import com.example.mobileappdevproj.Model.Order
 import kotlinx.android.synthetic.main.single_item.view.*
 import kotlinx.android.synthetic.main.single_order.view.*
@@ -25,6 +26,11 @@ class ListOrderAdapter(val context: Context, val items: ArrayList<Order>) : Recy
         holder.tvName.text = order.order_name
         holder.tvPrice.text = order.order_price
         holder.tvQty.text = order.order_qty
+
+        holder.btnDel.setOnClickListener {
+            val dbhelperUser = DBHelper_User(context)
+            dbhelperUser.deleteOrder(Order(order.order_id, holder.tvName.text.toString(), holder.tvPrice.text.toString(), holder.tvQty.text.toString()))
+        }
     }
 
     override fun getItemCount(): Int {
@@ -35,5 +41,6 @@ class ListOrderAdapter(val context: Context, val items: ArrayList<Order>) : Recy
         val tvQty = view.order_quantity
         val tvPrice = view.order_price
         val tvName = view.order_name
+        val btnDel = view.deleteBtn
     }
 }

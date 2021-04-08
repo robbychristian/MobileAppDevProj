@@ -44,6 +44,7 @@ class ListProductAdapter(val context: Context, val items: ArrayList<Products>) :
         holder.ivProd.setImageResource(product.prod_img.toInt())
         holder.tvSize.text = product.prod_size
         holder.tvPrice.text = product.prod_price
+        var count = 0
 
         holder.addBtn.setOnClickListener {
             if (context is HomeActivity) {
@@ -54,7 +55,7 @@ class ListProductAdapter(val context: Context, val items: ArrayList<Products>) :
                 dbhelper.writableDatabase
                 if (!qty.isEmpty() && qty != "0") {
                     Toast.makeText(context,"$name is Added to Cart!", Toast.LENGTH_SHORT).show()
-                    val order = Order(name, qty,price)
+                    val order = Order(count++, name, qty,price)
                     dbhelper.addOrder(order)
                     holder.tvQty.text.clear()
                 } else {

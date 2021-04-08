@@ -25,20 +25,11 @@ class CartDialogFragment: DialogFragment() {
             rvCart.adapter = orderAdapter
             rvCart.layoutManager = LinearLayoutManager(activity)
         } else {
-            rvItems.visibility = View.GONE
+            Toast.makeText(context, "No Items to show!", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        //val ctx = context!!
-        //if (getOrderList().size > 0) {
-        //    val orderAdapter = ListOrderAdapter(ctx, getOrderList())
-        //    rvCart.adapter = orderAdapter
-        //    rvCart.visibility = View.VISIBLE
-        //    rvCart.layoutManager = LinearLayoutManager(activity)
-        //} else {
-        //    rvItems.visibility = View.GONE
-        //}
         return inflater.inflate(R.layout.dialog_addcart, container, false)
     }
 

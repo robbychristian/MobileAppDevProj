@@ -97,56 +97,56 @@ class DBHelper_User(context: Context?):SQLiteOpenHelper(context, DATABASE_NAME, 
                 "Enjoy the fresh and sweetness of natural mangoes in every bite",
                 "65g",
                 "P20",
-                "2131165365"
+                "2131165366"
         )
         val prod9 = Products(
                 "Milk Melon",
                 "A taste of the smoothness from sweet milk ice cream blends with fresh natural melon",
                 "50g",
                 "P12",
-                "2131165376"
+                "2131165377"
         )
         val prod10 = Products(
                 "Milk Stick",
                 "Enjoy all the goodness of milk in a unique and refreshing way",
                 "40g",
                 "P10",
-                "2131165377"
+                "2131165378"
         )
         val prod11= Products(
                 "Pineapple Ice Stick",
                 "A fresh sensation of pineapple in a way of unique tasty ice cream",
                 "65g",
                 "P10",
-                "2131165401"
+                "2131165402"
         )
         val prod12 = Products(
                 "Strawberry Crispy",
                 "Feel the softness of milk ice cream with sweet strawberry jam and crispy outer layer",
                 "55g",
                 "P19",
-                "2131165403"
+                "2131165404"
         )
         val prod13 = Products(
                 "Sweet Corn",
                 "The sweet aroma and the taste of corn blends in a unique waffle ice cream",
                 "52g",
                 "P15",
-                "2131165404"
+                "2131165405"
         )
         val prod14 = Products(
                 "Vanilla Mochi",
                 "THE BEST DESSERT! Enjoy the soft sensation of sticky mochi with luscious chocolate/vanilla ice cream",
                 "45mL",
                 "P12",
-                "2131165378"
+                "2131165379"
         )
         val prod15 = Products(
                 "Watermelon Ice Stick",
                 "The freshness and smoothness of natural watermelon now comes in a form of delicious ice cream stick",
                 "65g",
                 "P10",
-                "2131165408"
+                "2131165409"
         )
     }
 
@@ -305,35 +305,47 @@ class DBHelper_User(context: Context?):SQLiteOpenHelper(context, DATABASE_NAME, 
             db.execSQL(selectQuery)
             return ArrayList()
         }
+        var id: Int
         var name: String
         var qty: String
         var price: String
         if (cursor.moveToFirst()) {
             do {
+                id = cursor.getInt(cursor.getColumnIndex(ORDER_ID))
                 name = cursor.getString(cursor.getColumnIndex(ORDER_NAME))
                 qty = cursor.getString(cursor.getColumnIndex(ORDER_QTY))
                 price = cursor.getString(cursor.getColumnIndex(ORDER_PRICE))
-                val order = Order(name, qty, price)
+                val order = Order(id, name, qty, price)
                 orderList.add(order)
             } while (cursor.moveToNext())
         }
         return orderList
     }
 
-    fun addOrder(order: Order): Boolean
+    fun addOrder(order: Order)
     {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(ORDER_NAME, order.order_name)
         values.put(ORDER_QTY, order.order_qty)
         values.put(ORDER_PRICE, order.order_price)
-        if (db.insert(ORDERS_TABLE_NAME, null, values).toInt() == -1) {
-            return false
-        } else {
-            db.insert(ORDERS_TABLE_NAME, null, values)
-            db.close()
-            return true
-        }
+        db.insert(ORDERS_TABLE_NAME, null, values)
+    }
+
+    fun deleteOrder(order: Order): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(ORDER_ID, order.order_id)
+        val success = db.delete(ORDERS_TABLE_NAME, ORDER_ID + "=" + order.order_id, null)
+
+        return success
+    }
+
+    fun getLastId(): Int {
+        val db = this.writableDatabase
+        val query = ("SELECT * FROM $ORDERS_TABLE_NAME ORDER BY $ORDER_ID DESC LIMIT 1;")
+        val last = db.rawQuery(query, null)
+        return last.toString().toInt()
     }
 
 }
