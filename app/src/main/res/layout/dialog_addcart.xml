@@ -67,13 +67,48 @@
             android:id="@+id/rvCart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/custom_bg_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="244dp"
+                android:layout_height="wrap_content"
+                android:text="Total:"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </LinearLayout>
 
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
 
-    </LinearLayout>
+    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
