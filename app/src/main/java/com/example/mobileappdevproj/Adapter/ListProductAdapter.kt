@@ -68,12 +68,6 @@ class ListProductAdapter(val context: Context, val items: ArrayList<Products>) :
         return items.size
     }
 
-    fun getItemsList(): ArrayList<Order> {
-        val dbHandler = DBHelper_User(context)
-        val itemList: ArrayList<Order> = dbHandler.orderList()
-        return itemList
-    }
-
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val ivProd = view.item_image
         val tvName = view.item_name

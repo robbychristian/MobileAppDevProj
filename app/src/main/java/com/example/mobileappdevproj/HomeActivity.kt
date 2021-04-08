@@ -23,8 +23,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         replaceFragment(HomeFragment)
-        dbhelperOrder = DBHelper_User(this)
-        dbhelperOrder.writableDatabase
+        dbhelper = DBHelper_User(this)
 
         val bottomNav = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottomNavigation)
 

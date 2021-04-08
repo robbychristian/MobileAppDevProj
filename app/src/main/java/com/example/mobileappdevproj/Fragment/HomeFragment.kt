@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.single_item.*
 
-lateinit var dbhelperOrder: DBHelper_User
+lateinit var dbhelper: DBHelper_User
 
 class HomeFragment: Fragment(R.layout.fragment_home) {
 
@@ -31,8 +31,6 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         cartBtn.setOnClickListener {
             val cartDialog = Dialog(context!!)
             cartDialog.setContentView(R.layout.dialog_addcart)
-
-
             cartDialog.show()
         }
 
