@@ -15,6 +15,70 @@
         android:layout_height="43dp"
         android:src="@drawable/custom_bg_gray" />
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="0,1,2,3"
+        android:gravity="center"
+        android:layout_marginTop="-35dp">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            >
+
+            <TextView
+                android:id="@+id/order_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Quantity:"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:layout_column="0"
+                />
+
+            <TextView
+                android:id="@+id/order_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Name:"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:layout_column="1"/>
+
+            <TextView
+                android:id="@+id/order_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Price:"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:layout_column="2"/>
+
+            <ImageButton
+                android:id="@+id/deleteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_delete"
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:layout_column="3"/>
+
+
+        </TableRow>
+    </TableLayout>
+
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,5 +122,5 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_delete" />
 
-    </LinearLayout>
+    </LinearLayout> -->
 </LinearLayout>
