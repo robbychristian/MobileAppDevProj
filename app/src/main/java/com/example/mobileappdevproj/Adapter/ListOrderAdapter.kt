@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.single_item.view.*
 import kotlinx.android.synthetic.main.single_order.view.*
 
 class ListOrderAdapter(val context: Context, val items: ArrayList<Order>) : RecyclerView.Adapter<ListOrderAdapter.ViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListOrderAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
                 LayoutInflater.from(context).inflate(
                         R.layout.single_order,
@@ -20,7 +20,7 @@ class ListOrderAdapter(val context: Context, val items: ArrayList<Order>) : Recy
         )
     }
 
-    override fun onBindViewHolder(holder: ListOrderAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val order = items.get(position)
         holder.tvName.text = order.order_name
         holder.tvPrice.text = order.order_price

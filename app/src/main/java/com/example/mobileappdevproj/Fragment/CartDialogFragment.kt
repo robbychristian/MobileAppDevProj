@@ -1,5 +1,6 @@
 package com.example.mobileappdevproj.Fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,21 +17,29 @@ import kotlinx.android.synthetic.main.dialog_addcart.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class CartDialogFragment: DialogFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.dialog_addcart, container, false)
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val ctx = context!!
+    override fun onStart() {
+        super.onStart()
         if (getOrderList().size > 0) {
-            val orderAdapter = ListOrderAdapter(ctx, getOrderList())
+            val orderAdapter = ListOrderAdapter(context!!, getOrderList())
             rvCart.adapter = orderAdapter
-            rvCart.visibility = View.VISIBLE
             rvCart.layoutManager = LinearLayoutManager(activity)
         } else {
             rvItems.visibility = View.GONE
         }
-        super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        //val ctx = context!!
+        //if (getOrderList().size > 0) {
+        //    val orderAdapter = ListOrderAdapter(ctx, getOrderList())
+        //    rvCart.adapter = orderAdapter
+        //    rvCart.visibility = View.VISIBLE
+        //    rvCart.layoutManager = LinearLayoutManager(activity)
+        //} else {
+        //    rvItems.visibility = View.GONE
+        //}
+        return inflater.inflate(R.layout.dialog_addcart, container, false)
     }
 
     fun getOrderList(): ArrayList<Order> {

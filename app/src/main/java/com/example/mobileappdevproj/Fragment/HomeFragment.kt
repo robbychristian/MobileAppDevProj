@@ -1,5 +1,6 @@
 package com.example.mobileappdevproj.Fragment
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,9 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileappdevproj.DBHelper.DBHelper_User
+import com.example.mobileappdevproj.ListOrderAdapter
 import com.example.mobileappdevproj.ListProductAdapter
+import com.example.mobileappdevproj.Model.Order
 import com.example.mobileappdevproj.Model.Products
 import com.example.mobileappdevproj.R
+import kotlinx.android.synthetic.main.dialog_addcart.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.single_item.*
@@ -29,9 +33,7 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
 
         var cartBtn = cartBtn
         cartBtn.setOnClickListener {
-            val cartDialog = Dialog(context!!)
-            cartDialog.setContentView(R.layout.dialog_addcart)
-            cartDialog.show()
+            CartDialogFragment().show(fragmentManager!!, "Cart")
         }
 
         val ctx = context!!
