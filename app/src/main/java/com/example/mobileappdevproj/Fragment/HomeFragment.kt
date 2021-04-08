@@ -13,13 +13,15 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileappdevproj.DBHelper.DBHelper_Prod
+import com.example.mobileappdevproj.DBHelper.DBHelper_User
 import com.example.mobileappdevproj.ListProductAdapter
 import com.example.mobileappdevproj.Model.Products
 import com.example.mobileappdevproj.R
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.single_item.*
+
+lateinit var dbhelperOrder: DBHelper_User
 
 class HomeFragment: Fragment(R.layout.fragment_home) {
 
@@ -28,7 +30,9 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         var cartBtn = cartBtn
         cartBtn.setOnClickListener {
             val cartDialog = Dialog(context!!)
-            cartDialog.setContentView(R.layout.fragment_profile)
+            cartDialog.setContentView(R.layout.dialog_addcart)
+
+
             cartDialog.show()
         }
 
@@ -46,26 +50,8 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun addToCart() {
-        if (item_name.toString() == null) {
-            Toast.makeText(context, "item_name is null", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(context, "item_name is not null", Toast.LENGTH_SHORT).show()
-        }
-
-        //val qty = qty_input.text.toString()
-        //val price = item_price.text.toString()
-
-        //val args = Bundle()
-        //args.putString("name", name)
-        ////args.putString("qty", qty)
-        ////args.putString("price", price)
-//
-        //Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
-    }
-
     fun getItemsList(): ArrayList<Products> {
-        val dbHandler = DBHelper_Prod(context)
+        val dbHandler = DBHelper_User(context)
         val itemList: ArrayList<Products> = dbHandler.prodList()
 
         return itemList

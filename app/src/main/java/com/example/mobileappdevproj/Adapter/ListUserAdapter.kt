@@ -24,18 +24,18 @@ class ListUserAdapter(val context: Context?, val users: ArrayList<User>) : Recyc
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val user = users.get(position)
-        holder.tvName.text = user.name
-        holder.tvDesc.text = user.address
-        //holder.ivProd.setImageResource(parseInt(product.prod_img))
-        holder.tvSize.text = user.email
-        holder.tvPrice.text = user.num
-
-        holder.addBtn.setOnClickListener {
-            if (context is HomeActivity) {
-                Toast.makeText(context, "Add to Cart working!", Toast.LENGTH_SHORT)
-            }
-        }
+     //   val user = users.get(position)
+     //   holder.tvName.text = user.user_name
+     //   holder.tvDesc.text = user.address
+     //   //holder.ivProd.setImageResource(parseInt(product.prod_img))
+     //   holder.tvSize.text = user.email
+     //   holder.tvPrice.text = user.num
+//
+     //   holder.addBtn.setOnClickListener {
+     //       if (context is HomeActivity) {
+     //           Toast.makeText(context, "Add to Cart working!", Toast.LENGTH_SHORT)
+     //       }
+     //   }
     }
 
     override fun getItemCount(): Int {

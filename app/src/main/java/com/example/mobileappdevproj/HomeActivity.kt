@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileappdevproj.DBHelper.DBHelper_Prod
+import com.example.mobileappdevproj.DBHelper.DBHelper_User
 import com.example.mobileappdevproj.Fragment.HomeFragment
 import com.example.mobileappdevproj.Fragment.TransactionFragment
 import com.example.mobileappdevproj.Fragment.ProfileFragment
@@ -23,7 +23,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         replaceFragment(HomeFragment)
-
+        dbhelperOrder = DBHelper_User(this)
+        dbhelperOrder.writableDatabase
 
         val bottomNav = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottomNavigation)
 

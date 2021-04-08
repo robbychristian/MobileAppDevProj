@@ -11,7 +11,7 @@ import com.example.mobileappdevproj.Model.User
 
 class RegisterActivity : AppCompatActivity() {
 
-    internal lateinit var dbUser:DBHelper_User
+    internal lateinit var dbUser: DBHelper_User
     internal var listUser: List<User> = ArrayList<User>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +41,9 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Password field empty!", Toast.LENGTH_LONG).show()
             } else if (!(pass.text.toString().equals(conf_pass.text.toString()))) {
                 Toast.makeText(applicationContext, "Password Mismatch!", Toast.LENGTH_LONG).show()
-            } else if (dbUser.emailExists(email.text.toString())){
+            }/* else if (dbUser.emailExists(email.text.toString())){
                 Toast.makeText(applicationContext, "Email already exists!", Toast.LENGTH_LONG).show()
-            } else {
+            }*/ else {
                 val user = User(
                     full_name.text.toString(),
                     email.text.toString(),

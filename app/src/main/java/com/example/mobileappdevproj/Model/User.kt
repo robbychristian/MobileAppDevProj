@@ -1,21 +1,21 @@
 package com.example.mobileappdevproj.Model
 
 class User {
-    var id: Int = 1
-    var name: String? = null
-    var email: String? = null
-    var address: String? = null
-    var num: String? = null
-    var pass: String? = null
+    var user_id: Int = 1
+    var user_name: String? = null
+    var user_email: String? = null
+    var user_address: String? = null
+    var user_num: String? = null
+    var user_pass: String? = null
 
     constructor() { }
 
     constructor(name: String, email: String, address: String, num: String, pass: String)
     {
-        this.name = name
-        this.email = email
-        this.address = address
-        this.num = num
-        this.pass = pass
+        this.user_name = name
+        this.user_email = email
+        this.user_address = address
+        this.user_num = num
+        this.user_pass = pass
     }
 }
