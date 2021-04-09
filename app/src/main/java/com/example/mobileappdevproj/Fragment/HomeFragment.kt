@@ -1,39 +1,41 @@
 package com.example.mobileappdevproj.Fragment
 
-import android.app.AlertDialog
-import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileappdevproj.DBHelper.DBHelper_User
-import com.example.mobileappdevproj.ListOrderAdapter
 import com.example.mobileappdevproj.ListProductAdapter
-import com.example.mobileappdevproj.Model.Order
 import com.example.mobileappdevproj.Model.Products
 import com.example.mobileappdevproj.R
-import kotlinx.android.synthetic.main.dialog_addcart.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.single_item.*
 
 lateinit var dbhelper: DBHelper_User
 
 class HomeFragment: Fragment(R.layout.fragment_home) {
+    companion object {
+        const val ARG_EMAIL = "email"
+        fun newInstance(email: String):HomeFragment{
+            val fragment = HomeFragment()
+
+            val bundle = Bundle().apply {
+                putString(ARG_EMAIL, email)
+            }
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        var cartBtn = cartBtn
+        dbhelper = DBHelper_User(context)
         cartBtn.setOnClickListener {
-            CartDialogFragment().show(fragmentManager!!, "Cart")
+            val dialog = CartDialogFragment.newInstance(dbhelper.totalPrice())
+            dialog.show(fragmentManager!!, "Cart")
         }
 
         val ctx = context!!
@@ -56,4 +58,5 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
 
         return itemList
     }
+
 }

@@ -201,6 +201,26 @@ class DBHelper_User(context: Context?):SQLiteOpenHelper(context, DATABASE_NAME, 
         return listUsers
     }
 
+    fun getPerson(email: String): String {
+        val person: ArrayList<User> = ArrayList()
+        val selectQuery = "SELECT * FROM $USER_TABLE_NAME WHERE user_email = ?"
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(selectQuery, arrayOf(email))
+        if (cursor.moveToFirst()) {
+                val user = User()
+                user.user_id = cursor.getInt(cursor.getColumnIndex(USER_ID))
+                user.user_name = cursor.getString(cursor.getColumnIndex(USER_NAME))
+                user.user_email = cursor.getString(cursor.getColumnIndex(USER_EMAIL))
+                user.user_address = cursor.getString(cursor.getColumnIndex(USER_ADDRESS))
+                user.user_num = cursor.getString(cursor.getColumnIndex(USER_CONTACT))
+                user.user_pass = cursor.getString(cursor.getColumnIndex(USER_PASS))
+                person.add(user)
+                return user.user_email.toString()
+        } else {
+            return "No user"
+        }
+    }
+
     fun addUser(user: User)
     {
         val db = this.writableDatabase
@@ -227,7 +247,7 @@ class DBHelper_User(context: Context?):SQLiteOpenHelper(context, DATABASE_NAME, 
         return writableDatabase.update(USER_TABLE_NAME, values, "$USER_EMAIL=?", arrayOf(user.user_email.toString()))
     }
     //LOGIN
-    fun loginUser(email:String, pass:String): Boolean {
+    fun loginUser(email: String, pass: String): Boolean {
         val query = "SELECT * FROM $USER_TABLE_NAME WHERE $USER_EMAIL=? AND $USER_PASS=?"
         val whereArgs = arrayOf(email, pass)
         val db = this.readableDatabase
@@ -255,7 +275,7 @@ class DBHelper_User(context: Context?):SQLiteOpenHelper(context, DATABASE_NAME, 
         val db = this.readableDatabase
         var cursor: Cursor? = null
         try {
-            cursor = db.rawQuery(selectQuery,null)
+            cursor = db.rawQuery(selectQuery, null)
         } catch (e: SQLiteException) {
             db.execSQL(selectQuery)
             return ArrayList()
@@ -341,11 +361,34 @@ class DBHelper_User(context: Context?):SQLiteOpenHelper(context, DATABASE_NAME, 
         return success
     }
 
-    fun getLastId(): Int {
-        val db = this.writableDatabase
-        val query = ("SELECT * FROM $ORDERS_TABLE_NAME ORDER BY $ORDER_ID DESC LIMIT 1;")
-        val last = db.rawQuery(query, null)
-        return last.toString().toInt()
+    fun totalPrice(): Int {
+        val orderList: ArrayList<Order> = ArrayList()
+        var total: Int = 0
+        val selectQuery = "SELECT * FROM $ORDERS_TABLE_NAME"
+        val db = this.readableDatabase
+        var cursor: Cursor? = null
+        try {
+            cursor = db.rawQuery(selectQuery, null)
+        } catch (e: SQLiteException) {
+            db.execSQL(selectQuery)
+            return 0
+        }
+        var id: Int
+        var name: String
+        var qty: String
+        var price: String
+        if (cursor.moveToFirst()) {
+            do {
+                id = cursor.getInt(cursor.getColumnIndex(ORDER_ID))
+                name = cursor.getString(cursor.getColumnIndex(ORDER_NAME))
+                qty = cursor.getString(cursor.getColumnIndex(ORDER_QTY))
+                price = cursor.getString(cursor.getColumnIndex(ORDER_PRICE))
+                total += price.toInt()
+                val order = Order(id, name, qty, price)
+                orderList.add(order)
+            } while (cursor.moveToNext())
+        }
+        return total
     }
 
 }

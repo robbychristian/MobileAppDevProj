@@ -9,6 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobileappdevproj.DBHelper.DBHelper_User
+import com.example.mobileappdevproj.Fragment.HomeFragment
+import com.example.mobileappdevproj.Fragment.ProfileFragment
 import com.example.mobileappdevproj.Model.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -46,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                                Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()
-                Toast.makeText(applicationContext, "Successfully logged in", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext, "Successfully logged in", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(applicationContext, "Error Logging in!", Toast.LENGTH_SHORT).show()
             }

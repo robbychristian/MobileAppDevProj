@@ -50,16 +50,17 @@ class ListProductAdapter(val context: Context, val items: ArrayList<Products>) :
             if (context is HomeActivity) {
                 val name =  holder.tvName.text.toString()
                 val qty = holder.tvQty.text.toString()
-                val price = (holder.tvPrice.text.toString().replace("P", "").toInt() * qty.toInt()).toString()
-                dbhelper = DBHelper_User(context)
-                dbhelper.writableDatabase
-                if (!qty.isEmpty() && qty != "0") {
+
+                if (holder.tvQty.text.toString() == "" || holder.tvQty.text.toString().isEmpty()){
+                    Toast.makeText(context, "Input quantity first!", Toast.LENGTH_SHORT).show()
+                } else {
+                    val price = (holder.tvPrice.text.toString().replace("P", "").toInt() * qty.toInt()).toString()
+                    dbhelper = DBHelper_User(context)
+                    dbhelper.writableDatabase
                     Toast.makeText(context,"$name is Added to Cart!", Toast.LENGTH_SHORT).show()
                     val order = Order(count++, name, qty,price)
                     dbhelper.addOrder(order)
                     holder.tvQty.text.clear()
-                } else {
-                    Toast.makeText(context, "Input Quantity!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
