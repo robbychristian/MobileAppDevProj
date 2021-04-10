@@ -8,14 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileappdevproj.DBHelper.DBHelper_User
 import com.example.mobileappdevproj.Fragment.HomeFragment
-import com.example.mobileappdevproj.Fragment.TransactionFragment
 import com.example.mobileappdevproj.Fragment.ProfileFragment
 import com.example.mobileappdevproj.Model.Products
 
 class HomeActivity : AppCompatActivity() {
 
     private val HomeFragment = HomeFragment()
-    private val TransactionFragment = TransactionFragment()
     private val ProfileFragment = ProfileFragment()
 
 
@@ -30,7 +28,6 @@ class HomeActivity : AppCompatActivity() {
         bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> replaceFragment(HomeFragment)
-                R.id.transactions -> replaceFragment(TransactionFragment)
                 R.id.profile -> replaceFragment(ProfileFragment)
             }
             true
